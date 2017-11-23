@@ -1,0 +1,10 @@
+<?xml version = "1.0"?>
+<class>
+   <Bitacora version = "1.0">
+      <Nivel>WARN</Nivel>
+      <Tamanio>16</Tamanio>
+	  <ModoCorreo>false</ModoCorreo>
+	  <DireccionGuardado>C:\Users\neko__000\Documents\NetBeansProjects\BitacoraLogV1</DireccionGuardado>
+   </Bitacora>
+
+</class>

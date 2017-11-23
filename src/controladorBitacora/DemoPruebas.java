@@ -35,8 +35,6 @@ public class DemoPruebas {
 //            Logger.getLogger(DemoPruebas.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //        
-
-// git test v1
         
         BitacoraEspacialDeBuzzLightYear nuevaB = new BitacoraEspacialDeBuzzLightYear();
         int valor = 1,valor2 = 0;

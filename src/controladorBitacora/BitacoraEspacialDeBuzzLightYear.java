@@ -1,15 +1,16 @@
 package controladorBitacora;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.io.Writer;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,44 +28,67 @@ public class BitacoraEspacialDeBuzzLightYear {
         InformacionMaquina informacionMaquina = new InformacionMaquina();
         Date fechaRegistro = new Date();
         Registro nuevoRegistro = new Registro(nivelBitacora, cadenaRegistro, fechaRegistro.toString(),
-                 "Version 1.0", informacionMaquina.obtenerInformacionSO(), informacionMaquina.obtenerInformacionEquipo());
+                "Version 1.0", informacionMaquina.obtenerInformacionSO(), informacionMaquina.obtenerInformacionEquipo());
 
         String jsonString = gson.toJson(nuevoRegistro);
-        
-        try {
-            leerRegistros();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BitacoraEspacialDeBuzzLightYear.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private void leerRegistros() throws FileNotFoundException {
         JsonParser parser = new JsonParser();
-        FileReader fr = new FileReader("datos.json");
-        JsonElement datos = parser.parse(fr);
-        parseJSon(datos);
-        
+
+        escribirArchivoJson(parser.parse(jsonString));
     }
 
-    private void parseJSon(JsonElement elementosJSon) {    
-            System.out.println("parsejson");
-            System.out.println(elementosJSon.getAsJsonObject().get("Nivel"));
-    }
-
-    private void writeJSonFile(String datos) {
- PrintWriter writer = null;
+    private JsonArray leerRegistros() {
+        FileReader fr = null;
         try {
-            File json = new File("datos.json");
-            writer = new PrintWriter("datos.json", "UTF-8");
-            writer.println(datos);
+            JsonParser parser = new JsonParser();
+            fr = new FileReader("datos.json");
+            JsonArray datos = parser.parse(fr).getAsJsonArray();
+            return datos;
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(BitacoraEspacialDeBuzzLightYear.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(BitacoraEspacialDeBuzzLightYear.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                crearJson();
+                return new JsonArray();
+            } catch (IOException ex1) {
+                Logger.getLogger(BitacoraEspacialDeBuzzLightYear.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } catch (IllegalStateException ise) {
+            return new JsonArray();
+        } 
+        return null;
+    }
+
+    private void parseJSon(JsonElement elementosJSon) {
+        System.out.println("parsejson");
+        System.out.println(elementosJSon.getAsJsonObject().get("Nivel"));
+    }
+
+    private void escribirArchivoJson(JsonElement json) {
+        File archivo = null;
+        FileWriter fr = null;
+        BufferedWriter br = null;
+
+        try {
+
+            JsonArray registros = leerRegistros();
+            registros.add(json);
+            System.out.println(registros.toString());
+            archivo = new File("datos.json");
+            fr = new FileWriter(archivo);
+            br = new BufferedWriter(fr);
+            br.write(registros.toString());
+
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
-            writer.close();
+            try {
+                if (null != fr) {
+                    fr.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
         }
+
     }
 
     public void fatal(Exception tipoFatal) {
@@ -84,6 +108,12 @@ public class BitacoraEspacialDeBuzzLightYear {
     }
 
     public void trace(Exception tipoTrace) {
+
+    }
+
+    private void crearJson() throws IOException {
+        Writer output;
+        output = new BufferedWriter(new FileWriter(new File("datos.json"), true));  //clears file every time
 
     }
 }

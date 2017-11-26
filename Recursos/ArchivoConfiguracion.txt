@@ -1,10 +1,13 @@
-<?xml version = "1.0"?>
+﻿<?xml version = "1.0"?>
 <class>
    <Bitacora version = "1.0">
-      <Nivel>WARN</Nivel>
-      <Tamanio>16</Tamanio>
-	  <ModoCorreo>false</ModoCorreo>
-	  <DireccionGuardado>C:\Users\neko__000\Documents\NetBeansProjects\BitacoraLogV1</DireccionGuardado>
+      <Nivel>Info</Nivel>
+      <Tamanio>1000</Tamanio>
+	  <ModoCorreo>True</ModoCorreo>
+	  <CorreoElectronico>sebasdosdos</CorreoElectronico>
+	  <ContraseñaCorreo>poltienegatos123</ContraseñaCorreo>
+	  <DireccionGuardado>C:\Users\neko__000\Documents\RepositorioGit\BitacoraEspacialDeBuzzLightYear\Recursos</DireccionGuardado>
+	  <ContenidoExtra>Usuario: Desconocido</ContenidoExtra>
    </Bitacora>
 
 </class>

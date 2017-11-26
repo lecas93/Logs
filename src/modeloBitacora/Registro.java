@@ -28,7 +28,7 @@ public class Registro {
     }
 
     /**
-     * @return the Nivel
+     * @return El Nivel del Registro
      */
     public String getNivel() {
         return Nivel;

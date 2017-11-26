@@ -5,11 +5,13 @@
  */
 package modeloBitacora;
 
-/**
- *
- * @author iris
- */
+import com.google.gson.JsonObject;
+
+
+
 public class JsonReader {
-    //Test branchs
+    JsonObject json;
+    
+ 
     
 }

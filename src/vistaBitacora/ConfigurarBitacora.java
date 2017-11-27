@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controladorBitacora;
+package vistaBitacora;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,11 +16,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 /**
- *
- * @author Samuel Aké
+ * Clase que se encargar de configurar la bitacora con el formato XML proporcionado por el usuario en el archivo de configuración.
+ * @author Samuel Aké y Andrés Castellanos
  */
 public class ConfigurarBitacora {
-    
+    /**
+     * 
+     * @param elementoAConfigurar El elemento en particular del archivo de configuración que se modificará.
+     * @param nuevoValor El valor que obtendrá el elemento a configurar.
+     * @throws ParserConfigurationException 
+     * @throws SAXException
+     * @throws IOException Excepción en caso de que no se encuentre el archivo.
+     */
     public void configurarBitacoraXML(String elementoAConfigurar, String nuevoValor) throws ParserConfigurationException, SAXException, IOException{
         File inputFile = new File("Recursos/ArchivoConfiguracion.txt");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -33,6 +40,14 @@ public class ConfigurarBitacora {
         eElement.getElementsByTagName(elementoAConfigurar).item(0).setTextContent(nuevoValor);
     }
     
+    /**
+     *
+     * @param elementoAObtener
+     * @return
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException
+     */
     public String obtenerConfiguracionXML(String elementoAObtener) throws ParserConfigurationException, SAXException, IOException{
         File inputFile = new File("Recursos/ArchivoConfiguracion.txt");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

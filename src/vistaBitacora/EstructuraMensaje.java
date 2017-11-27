@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modeloBitacora;
+package vistaBitacora;
 
-import controladorBitacora.ConfigurarBitacora;
+import vistaBitacora.ConfigurarBitacora;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -14,8 +14,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- *
- * @author neko__000
+ * Clase que envía los registros por correo electronico
+ * @author Samuel Ake y Andrés Castellanos
+ * @version 26112017
+ * 
  */
 public class EstructuraMensaje {
     private String usuario;
@@ -25,8 +27,12 @@ public class EstructuraMensaje {
         establecerCredenciales();
     }
     
-    
-    
+   /**
+ *
+ * @param asunto Texto que defino el asunto del e-mail
+ * @param cuerpo Texto que va dentro del mensaje
+ * 
+ */
     public void sendEmail(String asunto, String cuerpo) {
     // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.
         String remitente = getUsuario();  //Para la dirección nomcuenta@gmail.com
@@ -56,7 +62,12 @@ public class EstructuraMensaje {
             me.printStackTrace();   //Si se produce un error
         }
     }
-    
+    /**
+ *
+ * @see setUsuario()
+ * @see setContraseña()
+ * 
+ */
     private void establecerCredenciales(){
         try {
             setUsuario(new ConfigurarBitacora().obtenerConfiguracionXML("CorreoElectronico"));
@@ -69,7 +80,11 @@ public class EstructuraMensaje {
     public String getUsuario() {
         return usuario;
     }
-
+ /**
+ *
+ * @param usuario Correo electronico sin el dominio 
+ * 
+ */
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
@@ -77,7 +92,11 @@ public class EstructuraMensaje {
     public String getContraseña() {
         return contraseña;
     }
-
+/**
+ *
+ * @param contraseña Contraseña brindada por el usuario correspondiente al e-mail.
+ * 
+ */
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }

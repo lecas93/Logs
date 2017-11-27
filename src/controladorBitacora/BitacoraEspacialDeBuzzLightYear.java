@@ -1,6 +1,7 @@
 
 package controladorBitacora;
 
+import vistaBitacora.ConfigurarBitacora;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -11,12 +12,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Date;
-import modeloBitacora.EstructuraMensaje;
+import vistaBitacora.EstructuraMensaje;
 import modeloBitacora.Registro;
 
 /**
  *
- * @author Samuel Aké
+ * @author Samuel Aké y Andrés Castellanos
  */
 public class BitacoraEspacialDeBuzzLightYear {
     private String rutaNuevoArchivoRegistro;
@@ -66,24 +67,43 @@ public class BitacoraEspacialDeBuzzLightYear {
         return registros.toString();
     }
  
-    
+    /**
+     *
+     * @param tipoFatal 
+     */
     public void fatal (Exception tipoFatal){
         registroGeneral(tipoFatal,"Fatal");
         
     }
     
+    /**
+     *
+     * @param tipoError
+     */
     public void error (Exception tipoError){
         registroGeneral(tipoError, "Error");
     }
     
+    /**
+     *
+     * @param tipoWarn
+     */
     public void warn (Exception tipoWarn){
         registroGeneral(tipoWarn,"Warn");
     }
     
+    /**
+     *
+     * @param tipoInfo
+     */
     public void info (Exception tipoInfo){
         registroGeneral(tipoInfo, "Info");
     }
     
+    /**
+     *
+     * @param tipoTrace
+     */
     public void trace (Exception tipoTrace){
         registroGeneral(tipoTrace, "Trace");
     }
@@ -104,6 +124,11 @@ public class BitacoraEspacialDeBuzzLightYear {
         
     }
     
+    /**
+     *
+     * @param elementoAConfigurar
+     * @param nuevoValor
+     */
     public void configurarBitacoraEspacial(String elementoAConfigurar, String nuevoValor){
         try {
             new ConfigurarBitacora().configurarBitacoraXML(elementoAConfigurar, nuevoValor);

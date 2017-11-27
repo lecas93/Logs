@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modeloBitacora;
 
 /**
+ * Clase que ayuda a modelar el guardado de lpos registros
  *
- * @author neko__000
+ * @author Samuel Ake y Andrés Castellanos
  */
 public class Registro {
+
     private String Nivel;
     private String descripcionRegistro;
     private String fechaRegistro;
@@ -18,6 +16,14 @@ public class Registro {
     private String informacionMaquina;
     private String datoAdicional;
 
+    /**
+     *@param Nivel Nivel del mensaje definido para el registro.
+     *@param descripcionRegistro Descripcion del registro a generado.
+     *@param fechaRegistro Fecha en la que se generó dicho registro.
+     *@param versionFramework Version actual del framework.
+     *@param informacionSO Información relevante para el registro, en este caso del Sistema operativo.
+     *@param informacionMaquina Información relevante para el registro, referente al hardware.
+     */
     public Registro(String Nivel, String descripcionRegistro, String fechaRegistro, String versionFramework, String informacionSO, String informacionMaquina) {
         this.Nivel = Nivel;
         this.descripcionRegistro = descripcionRegistro;
@@ -35,95 +41,94 @@ public class Registro {
     }
 
     /**
-     * @param Nivel the Nivel to set
+     * @param Nivel Nivel a establecer.
      */
     public void setNivel(String Nivel) {
         this.Nivel = Nivel;
     }
 
     /**
-     * @return the descripcionRegistro
+     * @return Retorna la descripción del registro.
      */
     public String getDescripcionRegistro() {
         return descripcionRegistro;
     }
 
     /**
-     * @param descripcionRegistro the descripcionRegistro to set
+     * @param descripcionRegistro Descripción del registro a establecer.
      */
     public void setDescripcionRegistro(String descripcionRegistro) {
         this.descripcionRegistro = descripcionRegistro;
     }
 
     /**
-     * @return the fechaRegistro
+     * @return Retorna la fecha en la que se generó el registro.
      */
     public String getFechaRegistro() {
         return fechaRegistro;
     }
 
     /**
-     * @param fechaRegistro the fechaRegistro to set
+     * @param fechaRegistro La fecha del registro a establecer.
      */
     public void setFechaRegistro(String fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 
     /**
-     * @return the versionFramework
+     * @return Retorna La versión actual del framework.
      */
     public String getVersionFramework() {
         return versionFramework;
     }
 
     /**
-     * @param versionFramework the versionFramework to set
+     * @param versionFramework La versión del framework a establecer.
      */
     public void setVersionFramework(String versionFramework) {
         this.versionFramework = versionFramework;
     }
 
     /**
-     * @return the informacionSO
+     * @return Retorna la información del sistema operativo.
      */
     public String getInformacionSO() {
         return informacionSO;
     }
 
     /**
-     * @param informacionSO the informacionSO to set
+     * @param informacionSO La información del sistema operativo a establecer.
      */
     public void setInformacionSO(String informacionSO) {
         this.informacionSO = informacionSO;
     }
 
     /**
-     * @return the informacionMaquina
+     * @return Retorna la información del hardware.
      */
     public String getInformacionMaquina() {
         return informacionMaquina;
     }
 
     /**
-     * @param informacionMaquina the informacionMaquina to set
+     * @param informacionMaquina La informacion del hardware a establecer.
      */
     public void setInformacionMaquina(String informacionMaquina) {
         this.informacionMaquina = informacionMaquina;
     }
 
     /**
-     * @return the datoAdicional
+     * @return Retorna la información adicional.
      */
     public String getDatoAdicional() {
         return datoAdicional;
     }
 
     /**
-     * @param datoAdicional the datoAdicional to set
-     */
+     * @param datoAdicional Información adicional a establecer.
+     * */
     public void setDatoAdicional(String datoAdicional) {
         this.datoAdicional = datoAdicional;
     }
-    
-    
+
 }
